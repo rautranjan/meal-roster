@@ -1,0 +1,15 @@
+{
+  "room_1": {
+    "roommates": [
+      "Ranjan",
+      "Debajit"
+    ]
+  },
+  "room_2": {
+    "roommates": [
+      "Rohan",
+      "Vatsal",
+      "Piyush"
+    ]
+  }
+}

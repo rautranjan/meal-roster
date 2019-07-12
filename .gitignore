@@ -1,0 +1,4 @@
+# ignore all IDE files
+/.idea
+/.target
+*.iml
