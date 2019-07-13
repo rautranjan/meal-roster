@@ -4,6 +4,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Home {
@@ -61,10 +62,26 @@ public class Home {
         this.recent = recent;
     }
 
-    public boolean productNextCleaningDate() {
-        System.out.println((new Date().getTime() - vacuumDate.getTime()) / (24 * 60 * 60 * 1000));
-        if ((new Date().getTime() - vacuumDate.getTime()) / (24 * 60 * 60 * 1000) >= 18)
-            return true;
-        return false;
+    public void setCleaningDate() {
+        if ((new Date().getTime() - vacuumDate.getTime()) / (24 * 60 * 60 * 1000) >= 21) {
+            for (int i = 0; i < flatmates.length; i++) {
+                if (i == flatmates.length - 1) {
+                    vacuumCleaner = flatmates[0];
+                    Calendar cal = Calendar.getInstance();
+                    cal.add(Calendar.DATE, +7);
+                    vacuumDate = cal.getTime();
+                    break;
+                }
+
+                if (vacuumCleaner.equals(flatmates[i])) {
+                    vacuumCleaner = flatmates[i + 1];
+                    Calendar cal = Calendar.getInstance();
+                    cal.add(Calendar.DATE, +7);
+                    vacuumDate = cal.getTime();
+                    break;
+                }
+            }
+        }
+        System.out.println("Cleaner : " + vacuumCleaner + ", Date: " + vacuumDate);
     }
 }

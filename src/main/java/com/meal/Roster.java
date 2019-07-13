@@ -51,7 +51,7 @@ public class Roster {
                     recentObject.getJSONObject("vacuum").getString("date"),
                     recentObject.getJSONObject("vacuum").getString("name"));
 
-            home.productNextCleaningDate();
+            home.setCleaningDate();
 
             week = new Week(home);
             System.out.println(week);

@@ -36,7 +36,7 @@ public class Room {
     }
 
     public boolean productNextCleaningDate() {
-        if ((new Date().getTime() - lastDate.getTime()) / (24 * 60 * 60 * 1000) >= 18)
+        if ((new Date().getTime() - lastDate.getTime()) / (24 * 60 * 60 * 1000) >= 21)
             return true;
         return false;
     }
