@@ -1,5 +1,7 @@
 package com.meal;
 
+import java.util.Date;
+
 public class Week {
 
     private Shift monday, tuesday, wednesday, thursday, friday, saturday, saturdayNight, sunday, sundayNight;
@@ -8,8 +10,16 @@ public class Week {
 
     Week(Home home) {
         this.home = home;
+        this.initWeek();
+    }
+
+    public void initWeek() {
+        this.home.rotateRecent();
         this.setShifts();
         this.trashPicker = home.getRecent()[3];
+        this.home.setCleaningDate();
+        this.home.getRoom1().productNextCleaningDate();
+        this.home.getRoom2().productNextCleaningDate();
     }
 
 
@@ -29,15 +39,47 @@ public class Week {
 
     @Override
     public String toString() {
-        return this.monday + "\n" +
-                this.tuesday + "\n" +
-                this.wednesday + "\n" +
-                this.thursday + "\n" +
-                this.friday + "\n" +
-                this.saturday + "\n" +
-                this.saturdayNight + "\n" +
-                this.sunday + "\n" +
-                this.sundayNight + "\n" +
-                this.trashPicker;
+        String temp = "Monday : " + this.monday + "\n" +
+                "Tuesday : " + this.tuesday + "\n" +
+                "Wednesday : " + this.wednesday + "\n" +
+                "Thursday : " + this.thursday + "\n" +
+                "Friday : " + this.friday + "\n" +
+                "Saturday Morning : " + this.saturday + "\n" +
+                "Saturday Night : " + this.saturdayNight + "\n" +
+                "Sunday Morning : " + this.sunday + "\n" +
+                "Sunday NIght : " + this.sundayNight + "\n" +
+                "Trashpicker : " + this.trashPicker;
+
+        if (this.home.getVacuumDate().getTime() - new Date().getTime() > 1) {
+            temp += "\n" +
+                    "HomeVacuum : " + this.home.getVacuumCleaner() + "\n"
+                    + "HomeVacuumDate : " + this.home.getVacuumDate();
+        }
+
+        if (this.home.getRoom1().getVacuumLastDate().getTime() - new Date().getTime() > 1) {
+            temp += "\n" +
+                    "Room1 VacuumCleaner : " + this.home.getRoom1().getVacuumCleaner() + "\n"
+                    + "Room1 VacuumDate : " + this.home.getRoom1().getVacuumLastDate();
+        }
+
+        if (this.home.getRoom1().getBathroomCleanLastDate().getTime() - new Date().getTime() > 1) {
+            temp += "\n" +
+                    "Room1 BathroomCleaner : " + this.home.getRoom1().getBathroomCleaner() + "\n"
+                    + "Room1 BathroomDate : " + this.home.getRoom1().getBathroomCleanLastDate();
+        }
+
+        if (this.home.getRoom2().getVacuumLastDate().getTime() - new Date().getTime() > 1) {
+            temp += "\n" +
+                    "Room2 VacuumCleaner : " + this.home.getRoom2().getVacuumCleaner() + "\n"
+                    + "Room2 VacuumDate : " + this.home.getRoom2().getVacuumLastDate();
+        }
+
+        if (this.home.getRoom2().getBathroomCleanLastDate().getTime() - new Date().getTime() > 1) {
+            temp += "\n" +
+                    "Room2 BathroomCleaner : " + this.home.getRoom2().getBathroomCleaner() + "\n"
+                    + "Room2 BathroomDate : " + this.home.getRoom2().getBathroomCleanLastDate();
+        }
+
+        return temp;
     }
 }

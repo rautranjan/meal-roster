@@ -41,26 +41,17 @@ public class Roster {
             String[] sequence = Arrays.asList(temp).toArray(new String[temp.length]);
 
             //Define rooms
-            room1 = new Room(roommatesList1, recentObject.getJSONObject("room1").getString("vacuum"), recentObject.getJSONObject("room1").getString("bathroom"), recentObject.getJSONObject("room1").getString("date"));
-            room2 = new Room(roommatesList2, recentObject.getJSONObject("room2").getString("vacuum"), recentObject.getJSONObject("room2").getString("bathroom"), recentObject.getJSONObject("room2").getString("date"));
-
-
+            room1 = new Room(roommatesList1, recentObject.getJSONObject("room1").getString("vacuum"), recentObject.getJSONObject("room1").getString("bathroom"), recentObject.getJSONObject("room1").getString("bCleaningDate"),recentObject.getJSONObject("room1").getString("vCleaningDate"));
+            room2 = new Room(roommatesList2, recentObject.getJSONObject("room2").getString("vacuum"), recentObject.getJSONObject("room2").getString("bathroom"), recentObject.getJSONObject("room2").getString("bCleaningDate"),recentObject.getJSONObject("room2").getString("vCleaningDate"));
 
             //Define Home
             home = new Home(room1, room2, sequence,
                     recentObject.getJSONObject("vacuum").getString("date"),
                     recentObject.getJSONObject("vacuum").getString("name"));
 
-            home.setCleaningDate();
 
             week = new Week(home);
             System.out.println(week);
-
-
-
-
-
-
 
 
 
@@ -77,8 +68,6 @@ public class Roster {
 
     public static void main(String[] args) {
         Roster roster = new Roster(new File("src/main/resources/roommates.json"), new File("src/main/resources/recent.json"));
-
-
     }
 }
 
