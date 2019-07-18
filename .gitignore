@@ -1,4 +1,10 @@
 # ignore all IDE files
 /.idea
-/.target
 *.iml
+
+
+# ignore OS files
+.DS_Store
+
+# ignore target
+target/
