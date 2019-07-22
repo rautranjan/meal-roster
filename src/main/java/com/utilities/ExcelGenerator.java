@@ -8,8 +8,9 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExcelGenerator {
 
@@ -20,8 +21,15 @@ public class ExcelGenerator {
     }
 
     public void printExcel(String defaultLocation, String archiveLocation) {
-        try (OutputStream fileOut = new FileOutputStream("/Users/ranjanraut/IdeaProjects/roster/src/main/resources/MyFirstExcel.xlsx")) {
-            XSSFWorkbook workbook = new XSSFWorkbook();
+
+        XSSFWorkbook workbook = null;
+
+        archiveLocation = archiveLocation + "/Excels";
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
+
+        try (OutputStream fileOut = new FileOutputStream(defaultLocation + "/recent.xlsx")) {
+            workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("Sheet");
 
 
@@ -133,19 +141,136 @@ public class ExcelGenerator {
             cell.setCellValue(this.week.getTrashPicker());
             cell.setCellStyle(style);
 
+            int rowCount = 5;
 
-            sheet.autoSizeColumn(0, true);
-            sheet.autoSizeColumn(1, true);
-            sheet.autoSizeColumn(2, true);
-            sheet.autoSizeColumn(3, true);
-            sheet.autoSizeColumn(4, true);
-            sheet.autoSizeColumn(5, true);
+            if (this.week.getHome().getVacuumDate().getTime() - new Date().getTime() > 1) {
+                rowCount++;
+                sheet.addMergedRegion(new CellRangeAddress(0, 1, rowCount, rowCount));
+                sheet.addMergedRegion(new CellRangeAddress(2, 8, rowCount, rowCount));
+                rows[1].createCell(rowCount).setCellStyle(style);
+                cell = rows[0].createCell(rowCount);
+                cell.setCellValue("Home Vacuum");
+                cell.setCellStyle(style);
+
+                cell = rows[2].createCell(rowCount);
+                cell.setCellValue(this.week.getHome().getVacuumCleaner());
+                cell.setCellStyle(style);
+                rows[3].createCell(rowCount).setCellStyle(style);
+                rows[4].createCell(rowCount).setCellStyle(style);
+                rows[5].createCell(rowCount).setCellStyle(style);
+                rows[6].createCell(rowCount).setCellStyle(style);
+                rows[7].createCell(rowCount).setCellStyle(style);
+                rows[8].createCell(rowCount).setCellStyle(style);
+
+            }
+
+            if (this.week.getHome().getRoom1().getVacuumLastDate().getTime() - new Date().getTime() > 1) {
+                rowCount++;
+                sheet.addMergedRegion(new CellRangeAddress(0, 1, rowCount, rowCount));
+                sheet.addMergedRegion(new CellRangeAddress(2, 8, rowCount, rowCount));
+                rows[1].createCell(rowCount).setCellStyle(style);
+                cell = rows[0].createCell(rowCount);
+                cell.setCellValue("Room1 Vacuum");
+                cell.setCellStyle(style);
+
+                cell = rows[2].createCell(rowCount);
+                cell.setCellValue(this.week.getHome().getRoom1().getVacuumCleaner());
+                cell.setCellStyle(style);
+                rows[3].createCell(rowCount).setCellStyle(style);
+                rows[4].createCell(rowCount).setCellStyle(style);
+                rows[5].createCell(rowCount).setCellStyle(style);
+                rows[6].createCell(rowCount).setCellStyle(style);
+                rows[7].createCell(rowCount).setCellStyle(style);
+                rows[8].createCell(rowCount).setCellStyle(style);
+
+            }
+
+            if (this.week.getHome().getRoom1().getBathroomCleanLastDate().getTime() - new Date().getTime() > 1) {
+                rowCount++;
+                sheet.addMergedRegion(new CellRangeAddress(0, 1, rowCount, rowCount));
+                sheet.addMergedRegion(new CellRangeAddress(2, 8, rowCount, rowCount));
+                rows[1].createCell(rowCount).setCellStyle(style);
+                cell = rows[0].createCell(rowCount);
+                cell.setCellValue("Room1 Bathroom");
+                cell.setCellStyle(style);
+
+                cell = rows[2].createCell(rowCount);
+                cell.setCellValue(this.week.getHome().getRoom1().getBathroomCleaner());
+                cell.setCellStyle(style);
+                rows[3].createCell(rowCount).setCellStyle(style);
+                rows[4].createCell(rowCount).setCellStyle(style);
+                rows[5].createCell(rowCount).setCellStyle(style);
+                rows[6].createCell(rowCount).setCellStyle(style);
+                rows[7].createCell(rowCount).setCellStyle(style);
+                rows[8].createCell(rowCount).setCellStyle(style);
+
+            }
+
+            if (this.week.getHome().getRoom2().getVacuumLastDate().getTime() - new Date().getTime() > 1) {
+                rowCount++;
+                sheet.addMergedRegion(new CellRangeAddress(0, 1, rowCount, rowCount));
+                sheet.addMergedRegion(new CellRangeAddress(2, 8, rowCount, rowCount));
+                rows[1].createCell(rowCount).setCellStyle(style);
+                cell = rows[0].createCell(rowCount);
+                cell.setCellValue("Room2 Vacuum");
+                cell.setCellStyle(style);
+
+                cell = rows[2].createCell(rowCount);
+                cell.setCellValue(this.week.getHome().getRoom2().getVacuumCleaner());
+                cell.setCellStyle(style);
+                rows[3].createCell(rowCount).setCellStyle(style);
+                rows[4].createCell(rowCount).setCellStyle(style);
+                rows[5].createCell(rowCount).setCellStyle(style);
+                rows[6].createCell(rowCount).setCellStyle(style);
+                rows[7].createCell(rowCount).setCellStyle(style);
+                rows[8].createCell(rowCount).setCellStyle(style);
+
+            }
+
+            if (this.week.getHome().getRoom2().getBathroomCleanLastDate().getTime() - new Date().getTime() > 1) {
+                rowCount++;
+                sheet.addMergedRegion(new CellRangeAddress(0, 1, rowCount, rowCount));
+                sheet.addMergedRegion(new CellRangeAddress(2, 8, rowCount, rowCount));
+                rows[1].createCell(rowCount).setCellStyle(style);
+                cell = rows[0].createCell(rowCount);
+                cell.setCellValue("Room2 Bathroom");
+                cell.setCellStyle(style);
+
+                cell = rows[2].createCell(rowCount);
+                cell.setCellValue(this.week.getHome().getRoom2().getBathroomCleaner());
+                cell.setCellStyle(style);
+                rows[3].createCell(rowCount).setCellStyle(style);
+                rows[4].createCell(rowCount).setCellStyle(style);
+                rows[5].createCell(rowCount).setCellStyle(style);
+                rows[6].createCell(rowCount).setCellStyle(style);
+                rows[7].createCell(rowCount).setCellStyle(style);
+                rows[8].createCell(rowCount).setCellStyle(style);
+
+            }
+
+
+            for (int i = 0; i <= rowCount; i++)
+                sheet.autoSizeColumn(i, true);
 
             workbook.write(fileOut);
-        } catch (Exception e) {
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
+        if (!new File(archiveLocation).exists())
+            new File(archiveLocation).mkdir();
+
+        try (OutputStream fileOut = new FileOutputStream(archiveLocation + "/recent_" + dateFormat.format(new Date()) + ".xlsx")) {
+            workbook.write(fileOut);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

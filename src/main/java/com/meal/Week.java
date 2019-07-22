@@ -77,6 +77,10 @@ public class Week {
         return trashPicker;
     }
 
+    public Home getHome() {
+        return home;
+    }
+
     @Override
     public String toString() {
         String temp = "Monday : " + this.monday + "\n" +
