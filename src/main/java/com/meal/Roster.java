@@ -1,5 +1,6 @@
 package com.meal;
 
+import com.utilities.ExcelGenerator;
 import com.utilities.JSONGenerator;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
@@ -23,6 +24,10 @@ public class Roster {
 
     public Home getHome() {
         return home;
+    }
+
+    public Week getWeek() {
+        return week;
     }
 
     private void init(File roommates, File recent) {
@@ -73,10 +78,9 @@ public class Roster {
     public static void main(String[] args) {
         Roster roster = new Roster(new File(args[0] + "/roommates.json"), new File(args[0] + "/recent.json"));
         JSONGenerator jsonGenerator = new JSONGenerator(roster.getHome());
-
+        ExcelGenerator excelGenerator = new ExcelGenerator(roster.getWeek());
         jsonGenerator.printJson(args[0],args[1]);
-
-
+        excelGenerator.printExcel(args[0],args[1]);
     }
 }
 

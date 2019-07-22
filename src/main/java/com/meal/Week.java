@@ -37,6 +37,46 @@ public class Week {
 
     }
 
+    public Shift getMonday() {
+        return monday;
+    }
+
+    public Shift getTuesday() {
+        return tuesday;
+    }
+
+    public Shift getWednesday() {
+        return wednesday;
+    }
+
+    public Shift getThursday() {
+        return thursday;
+    }
+
+    public Shift getFriday() {
+        return friday;
+    }
+
+    public Shift getSaturday() {
+        return saturday;
+    }
+
+    public Shift getSaturdayNight() {
+        return saturdayNight;
+    }
+
+    public Shift getSunday() {
+        return sunday;
+    }
+
+    public Shift getSundayNight() {
+        return sundayNight;
+    }
+
+    public String getTrashPicker() {
+        return trashPicker;
+    }
+
     @Override
     public String toString() {
         String temp = "Monday : " + this.monday + "\n" +
