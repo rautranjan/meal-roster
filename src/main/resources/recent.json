@@ -1,25 +1,25 @@
 {
     "sequence": [
-        "Vatsal",
         "Piyush",
         "Ranjan",
         "Debajit",
-        "Rohan"
+        "Rohan",
+        "Vatsal"
     ],
     "vacuum": {
-        "date": "08/19/2019",
+        "date": "08/25/2019",
         "name": "Vatsal"
     },
     "room1": {
-        "bCleaningDate": "08/19/2019",
+        "bCleaningDate": "08/25/2019",
         "vacuum": "Debajit",
-        "vCleaningDate": "08/19/2019",
+        "vCleaningDate": "08/25/2019",
         "bathroom": "Ranjan"
     },
     "room2": {
         "bCleaningDate": "07/21/2019",
         "vacuum": "Vatsal",
-        "vCleaningDate": "08/19/2019",
+        "vCleaningDate": "08/25/2019",
         "bathroom": "Rohan"
     }
 }
