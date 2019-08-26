@@ -107,7 +107,7 @@ public class Room {
             }
         }
 
-        if ((new Date().getTime() - vacuumLastDate.getTime()) / (24 * 60 * 60 * 1000) >= 30) {
+        if ((new Date().getTime() - vacuumLastDate.getTime()) / (24 * 60 * 60 * 1000) >= 14) {
             for (int i = 0; i < roommates.length; i++) {
 
 
